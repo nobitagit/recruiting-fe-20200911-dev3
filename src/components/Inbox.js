@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import api from '../api';
 import '../Inbox.css';
 import Message from './Message';
 import ActionButton from './ActionButton';
@@ -8,7 +7,6 @@ class Inbox extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      messages: null,
       indexActiveMessage: 0,
     };
   }
@@ -17,13 +15,13 @@ class Inbox extends Component {
     e.preventDefault();
     this.setState({
       indexActiveMessage:
-        (this.state.indexActiveMessage + 1) % this.state.messages.length,
+        (this.state.indexActiveMessage + 1) % this.props.messages.length,
     });
   };
 
   previousMessage = e => {
     e.preventDefault();
-    const numberOfMessages = this.state.messages.length;
+    const numberOfMessages = this.props.messages.length;
     this.setState({
       //To make modulo operator works properly in case of negative number i.e. so that -1 % 3 = 2.
       indexActiveMessage:
@@ -32,15 +30,6 @@ class Inbox extends Component {
         numberOfMessages,
     });
   };
-
-  componentDidMount() {
-    api
-      .fetchInboxMessages()
-      .then(res => {
-        this.setState({ messages: res });
-      })
-      .catch(err => console.log('DEBUG Error at fetchInboxMessage', err));
-  }
 
   render() {
     return (
@@ -58,12 +47,12 @@ class Inbox extends Component {
         </div>
 
         <Message
-          messages={this.state.messages}
+          messages={this.props.messages}
           indexActiveMessage={this.state.indexActiveMessage}
         />
 
         <ActionButton
-          messages={this.state.messages}
+          messages={this.props.messages}
           indexActiveMessage={this.state.indexActiveMessage}
         />
       </div>
