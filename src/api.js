@@ -11,13 +11,26 @@ const errHandler = err => {
   throw err;
 };
 
+const fetchLoanMessages = () => {
+  return service
+    .get('/inbox/loans')
+    .then(res => res.data)
+    .catch(errHandler);
+};
+
+const fetchTillMessages = () => {
+  return service
+    .get('/inbox/till')
+    .then(res => res.data)
+    .catch(errHandler);
+};
+
 export default {
   service: service,
 
-  fetchInboxMessages() {
-    return service
-      .get('/inbox/loans')
-      .then(res => res.data)
-      .catch(errHandler);
+  async fetchInboxMessages() {
+    const { data: loanMessages } = await fetchLoanMessages();
+    const { data: tillMessages } = await fetchTillMessages();
+    return [...loanMessages, ...tillMessages];
   },
 };
