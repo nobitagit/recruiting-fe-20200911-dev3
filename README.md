@@ -1,1 +1,0 @@
-# recruitment-kata-fe
