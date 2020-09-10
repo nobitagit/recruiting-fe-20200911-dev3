@@ -19,10 +19,6 @@ class BaseView extends Component {
       .catch(err => console.log('DEBUG Error at fetchInboxMessage', err));
   }
 
-  componentDidUpdate(prevProps) {
-    console.log(this.messages);
-  }
-
   render() {
     return <Inbox messages={this.state.messages} />;
   }
