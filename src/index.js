@@ -1,5 +1,5 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Inbox from './components/Inbox';
+import BaseView from './containers/BaseView';
 
-ReactDOM.render(<Inbox />, document.getElementById('root'));
+ReactDOM.render(<BaseView />, document.getElementById('root'));
