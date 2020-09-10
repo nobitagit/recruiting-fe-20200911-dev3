@@ -1,0 +1,44 @@
+.Inbox {
+  width: 400px;
+  height: 380px;
+  padding: 30px 50px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: #faf0f0;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 18px;
+}
+
+.title {
+  font-weight: bold;
+}
+
+button img {
+  height: 20px;
+}
+
+.inbox-buttons button {
+  border: 0px;
+  background: transparent
+}
+
+.inbox-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.grey-text {
+  color: #757171
+}
+
+.action-button {
+  /* height: 40px;
+  width: 100px; */
+  padding: 10px 15px;
+  border-radius: 20px;
+  color: #fff;
+  background-color: #4a65b6;
+  border: 0px;
+  font-size: 1.2em;
+}
